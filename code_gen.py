@@ -2,14 +2,13 @@ import pandas as pd
 from hashlib import sha256
 import json
 
-df = pd.read_csv('prodlenia_sept.csv')
 
-tutors = df['vk_tutor'].dropna().drop_duplicates()
+def actual_tutors():
+    df = pd.read_csv('monitor_test.csv')
 
-tutors_dict = {sha256(tutor.encode('utf-8')).hexdigest()[0:8]:tutor for tutor in tutors}
+    tutors = df['email_tutor'].dropna().drop_duplicates()
 
-with open('tutors.json','w+') as f:
-    json.dump(tutors_dict,f)
+    tutors_dict = {sha256((tutor+'09').encode('utf-8')).hexdigest()[0:10]:tutor for tutor in tutors}
 
-with open('tutors.json') as f:
-    tut_d = json.load(f)
+    with open('tutors.json','w+') as f:
+        json.dump(tutors_dict,f)

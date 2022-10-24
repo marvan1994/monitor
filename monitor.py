@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import random as rand
 
-st.set_page_config(page_title='Умный монитор', layout = 'wide', page_icon = 'um.ico')
+st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
 
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
@@ -18,7 +18,7 @@ main_cols = ['stud_vk', 'stud_email', 'paid_at', 'tariff',
 
 col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'paid_at':'Дата оплаты', 'tariff':'Тариф',
        'product_title':'Продукт', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
-       'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Дата последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
+       'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
        'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_vieved_web':'Кол-во просмотренных вебов',
         'tutor_role':'Роль наставника',
        'vk_tutor':'ВК наставника', 'email_tutor':'Почта на ставника'}

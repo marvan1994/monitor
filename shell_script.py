@@ -12,4 +12,4 @@ call('git add .', shell = True)
 call('git commit -m "'+ commit_message +'"', shell = True)
 
 #Push the new or update files
-call('git push origin master', shell = True)
+call('git push origin main', shell = True)

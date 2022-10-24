@@ -3,6 +3,9 @@ import pandas as pd
 import json
 import random as rand
 
+st.set_page_config(page_title='Умный монитор', layout = 'wide', page_icon = 'um.ico')
+
+st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 pd.set_option('display.max_colwidth', -1)
 df = pd.read_csv('monitor.csv')

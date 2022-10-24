@@ -1,14 +1,18 @@
 import pandas as pd
 from hashlib import sha256
 import json
+from datetime import datetime as date
 
 
-def actual_tutors():
-    df = pd.read_csv('monitor_test.csv')
+df = pd.read_csv('monitor.csv')
 
-    tutors = df['email_tutor'].dropna().drop_duplicates()
+tutors = df['email_tutor'].dropna().drop_duplicates()
 
-    tutors_dict = {sha256((tutor+'09').encode('utf-8')).hexdigest()[0:10]:tutor for tutor in tutors}
+tutors_dict = {sha256((tutor+'10').encode('utf-8')).hexdigest()[0:10]:tutor for tutor in tutors}
 
-    with open('tutors.json','w+') as f:
-        json.dump(tutors_dict,f)
+with open('tutors.json','w+') as f:
+    json.dump(tutors_dict,f)
+
+
+with open('updated_time.txt','w+') as f:
+    f.write(date.now().strftime('%Y-%m-%d %H:%M'))

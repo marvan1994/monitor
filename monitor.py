@@ -7,7 +7,7 @@ st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
 
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
-pd.set_option('display.max_colwidth', -1)
+
 df = pd.read_csv('monitor.csv')
 df = df.set_index('student_id')
 main_cols = ['stud_vk', 'stud_email', 'paid_at', 'tariff',
@@ -40,9 +40,18 @@ if len(code) != 0:
         main = df.columns
     with open('tutors.json') as f:
         tut_d = json.load(f)
+
+    tam_d = {tut_d.get(key):key for key in tut_d.keys()}
+
     if code == 'bakuma_top':
 
         st.markdown(f'Привет Юля! Сегодня ты {fruits[rand.randint(0,len(fruits))]}')
+
+        with st.expander("Если хочешь узнать код сотрудника, то тебе сюда"):
+            get_code = st.text_input('Введи почту').replace(' ','')
+            if len(get_code)>1:
+                st.markdown(f"*{tam_d.get(get_code,'Такого сотрудника не нашли')}*")
+
         curators = df['email_tutor'].unique().tolist()
         selected_cur = st.selectbox('Отфильтровать по кураторам', [''] + curators)
 

@@ -8,7 +8,7 @@ st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 
-
+@st.cache
 def load_df():
     return pd.read_csv('monitor.csv').set_index('student_id')
 

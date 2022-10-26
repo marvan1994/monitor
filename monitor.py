@@ -8,16 +8,18 @@ st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 
+@st.cache
+def load_df():
+    return pd.read_csv('monitor.csv').set_index('student_id')
 
-df = pd.read_csv('monitor.csv')
-df = df.set_index('student_id')
-main_cols = ['stud_vk', 'stud_email', 'paid_at', 'tariff',
+df = load_df()
+main_cols = ['stud_vk', 'stud_name', 'stud_email', 'paid_at', 'tariff',
        'product_title', 'subject','class_degree', 'speaker',
        'month_product', 'avg_result', 'last_hw_sending', 'max_count_hw',
        'count_done_hw', 'max_count_web', 'count_vieved_web', 'tutor_role',
        'vk_tutor', 'email_tutor']
 
-col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'paid_at':'Дата оплаты', 'tariff':'Тариф',
+col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', 'paid_at':'Дата оплаты', 'tariff':'Тариф',
        'product_title':'Продукт', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
        'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
        'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_vieved_web':'Кол-во просмотренных вебов',
@@ -63,6 +65,13 @@ if len(code) != 0:
     elif code in tut_d.keys():
         st.markdown(f'Приветик! Сегодня ты {fruits[rand.randint(0,len(fruits)-1)]}')
         dft = df.query(f'email_tutor == "{tut_d[code]}"')
-        st.dataframe(dft[main].rename(columns = col_dict))
+        students = dft['stud_name'].unique().tolist()
+        selected_stud = st.selectbox('Отфильтровать по ученикам', [''] + students)
+        if selected_stud !='':
+            st.dataframe(dft[main].query(f'stud_name == "{selected_stud}"').rename(columns = col_dict))
+        else:
+            st.dataframe(dft[main].rename(columns=col_dict))
+
+
     else:
         st.markdown('Куратора с таким кодом не найдено')

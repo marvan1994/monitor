@@ -8,7 +8,7 @@ st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 
-@st.cache
+
 df = pd.read_csv('monitor.csv')
 df = df.set_index('student_id')
 main_cols = ['stud_vk', 'stud_email', 'paid_at', 'tariff',
@@ -24,15 +24,13 @@ col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'paid_at':'Дата о�
         'tutor_role':'Роль наставника',
        'vk_tutor':'ВК наставника', 'email_tutor':'Почта на ставника'}
 
-@st.cache
+
 with open('updated_time.txt') as f:
     update_date = f.readline()
 
-@st.cache
 with open('fruits.txt') as f:
     fruits = f.readlines()
 
-@st.cache
 with open('tutors.json') as f:
     tut_d = json.load(f)
     tam_d = {tut_d.get(key):key for key in tut_d.keys()}

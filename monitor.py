@@ -4,6 +4,15 @@ import json
 import random as rand
 
 st.set_page_config(page_title='Умный монитор', page_icon = 'um.ico')
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')

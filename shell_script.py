@@ -1,5 +1,7 @@
 from subprocess import call
 
+call('python -m script_monitors_data', shell = True)
+
 call('python -m code_gen', shell = True)
 
 #Commit Message

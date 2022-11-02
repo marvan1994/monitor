@@ -14,7 +14,7 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
-st.markdown('### Вас приветствует Резервный Умный Монитор! ###')
+st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache

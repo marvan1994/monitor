@@ -14,7 +14,7 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
-st.markdown('### Вас приветствует Резервный Умный Монитор! ###')
+st.markdown('### Вас приветствует Умный Монитор! ###')
 code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache
@@ -55,7 +55,7 @@ if len(code) != 0:
     else:
         main = df.columns
 
-    if code == 'umschool_top':
+    if code == 'bakuma_top':
 
         st.markdown(f'Привет Юля! Сегодня ты {fruits[rand.randint(0,len(fruits))]}')
 

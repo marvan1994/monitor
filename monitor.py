@@ -55,7 +55,7 @@ if len(code) != 0:
     else:
         main = df.columns
 
-    if code == 'bakuma_top':
+    if code == 'umschool_top':
 
         st.markdown(f'Привет Юля! Сегодня ты {fruits[rand.randint(0,len(fruits))]}')
 

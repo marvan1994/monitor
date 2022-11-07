@@ -19,7 +19,7 @@ code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache
 def load_df():
-    return pd.read_csv('monitor.csv').set_index('student_id')
+    return pd.read_csv('monitor.csv',dtype='unicode').set_index('student_id')
 
 df = load_df()
 main_cols = ['stud_vk', 'stud_name', 'stud_email', 'paid_at', 'tariff',

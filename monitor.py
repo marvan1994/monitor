@@ -23,7 +23,7 @@ def load_df():
        'product_title':'str', 'is_pack':'int', 'subject':'str', 'class_degree':'str', 'speaker':'str',
        'month_product':'str', 'avg_result':'float', 'last_hw_sending':'str', 'max_count_hw':'int',
        'count_done_hw':int, 'max_count_web':int, 'count_vieved_web':int, 'tutor_role':'str',
-       'vk_tutor':str, 'email_tutor':'str', 'name_tutor':str, 'last_activity_tutor':str,
+       'vk_tutor':str, 'email_tutor':'str', 'name_tutor':str, 'last_activity_tutor':'str',
        'last_login_tutor':str, 'curator_name_in_vk':str}).set_index('student_id')
 
 df = load_df()

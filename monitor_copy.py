@@ -74,7 +74,7 @@ if len(code) != 0:
             st.dataframe(df[main].rename(columns = col_dict))
     elif code in tut_d.keys():
         st.markdown(f'Приветик! Сегодня ты {fruits[rand.randint(0,len(fruits)-1)]}')
-        dft = df.query(f'email_tutor == "{tut_d[code]}"')
+        dft = df.query(f'curator_email == "{tut_d[code]}"')
         students = dft['stud_name'].unique().tolist()
         selected_stud = st.selectbox('Отфильтровать по ученикам', [''] + students)
         if selected_stud !='':

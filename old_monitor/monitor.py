@@ -19,22 +19,26 @@ code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache
 def load_df():
-    return pd.read_csv('monitor.csv').set_index('student_id')
+    return pd.read_csv('monitor.csv',dtype={'student_id':int, 'stud_vk':'str', 'stud_email':'str', 'stud_name':'str', 'paid_at':str, 'tariff':str,
+       'product_title':'str', 'is_pack':'int', 'subject':'str', 'class_degree':'str', 'speaker':'str',
+       'month_product':'str', 'avg_result':'float', 'last_hw_sending':'str', 'max_count_hw':'int',
+       'count_done_hw':int, 'max_count_web':'int', 'count_vieved_web':int, 'tutor_role':'str',
+       'vk_tutor':str, 'email_tutor':'str', 'name_tutor':str, 'last_activity_tutor':'str',
+       'last_login_tutor':str, 'curator_name_in_vk':str}).set_index('student_id')
 
 df = load_df()
-main_cols = ['student_id', 'stud_name', 'stud_vk', 'stud_email', 'month_product',
-       'pur_type', 'subject', 'class_degree', 'speaker', 'tariff', 'is_pack',
-       'goal', 'max_count_hw', 'count_done_hw', 'avg_result', 'max_count_web',
-       'count_viewed_web', 'count_viewed_web_online', 'avg_nps', 'curator_vk',
-       'curator_fio', 'curator_last_login','curator_last_activity',
-       'curator_email']
+main_cols = ['stud_vk', 'stud_name', 'stud_email', 'paid_at', 'tariff',
+       'product_title', 'subject','class_degree', 'speaker',
+       'month_product', 'avg_result', 'last_hw_sending', 'max_count_hw',
+       'count_done_hw', 'max_count_web', 'count_vieved_web', 'tutor_role',
+       'vk_tutor', 'email_tutor']
 
-col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', 'tariff':'Тариф',
-       'product_title':'Продукт','pur_type':'Тип покупки', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
+col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', 'paid_at':'Дата оплаты', 'tariff':'Тариф',
+       'product_title':'Продукт', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
        'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
-       'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн',
-        'avg_nps':'Средний балл за уроки','is_pack':'Это пакет?','goal':'Цель',
-       'curator_vk':'ВК наставника','curator_email':'Почта на ставника'}
+       'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_vieved_web':'Кол-во просмотренных вебов',
+        'tutor_role':'Роль наставника',
+       'vk_tutor':'ВК наставника', 'email_tutor':'Почта на ставника'}
 
 
 with open('updated_time.txt') as f:
@@ -65,11 +69,11 @@ if len(code) != 0:
             if len(get_code)>1:
                 st.markdown(f"*{tam_d.get(get_code,'Такого сотрудника не нашли')}*")
 
-        curators = df['curator_email'].unique().tolist()
+        curators = df['email_tutor'].unique().tolist()
         selected_cur = st.selectbox('Отфильтровать по кураторам', [''] + curators)
 
         if selected_cur !='':
-            st.dataframe(df[main].query(f'curator_email == "{selected_cur}"').rename(columns = col_dict))
+            st.dataframe(df[main].query(f'email_tutor == "{selected_cur}"').rename(columns = col_dict))
         else:
             st.dataframe(df[main].rename(columns = col_dict))
     elif code in tut_d.keys():

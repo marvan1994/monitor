@@ -34,7 +34,7 @@ col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', '
        'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
        'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн',
         'avg_nps':'Средний балл за уроки','is_pack':'Это пакет?','goal':'Цель',
-       'curator_vk':'ВК наставника','curator_email':'Почта на ставника'}
+       'curator_vk':'ВК наставника','curator_email':'Почта наставника'}
 
 
 with open('updated_time.txt') as f:

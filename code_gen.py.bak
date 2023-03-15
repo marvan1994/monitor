@@ -6,7 +6,7 @@ from datetime import datetime as date
 
 df = pd.read_csv('monitor.csv')
 
-tutors = df['curator_email'].dropna().drop_duplicates()
+tutors = df['email_tutor'].dropna().drop_duplicates()
 
 tutors_dict = {sha256((tutor+'10').encode('utf-8')).hexdigest()[0:10]:tutor for tutor in tutors}
 

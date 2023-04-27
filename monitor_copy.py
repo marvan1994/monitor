@@ -19,7 +19,7 @@ code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache
 def load_df():
-    return pd.read_csv('monitor.csv',dtype={'student_id':'int', 'stud_vk':str, 'stud_email':'str', 'stud_name':'str', 'tariff':str,
+    return pd.read_csv('monitor.csv',dtype={'student_id':int, 'stud_vk':str, 'stud_email':'str', 'stud_name':'str', 'tariff':str,
        'product_title':'str', 'is_pack':'int', 'subject':'str', 'class_degree':'str', 'speaker':'str',
        'month_product':'str', 'avg_result':'float', 'last_hw_sending':'str', 'max_count_hw':'int',
        'count_done_hw':int, 'max_count_web':'int', 'count_vieved_web':int, 'tutor_role':'str',
@@ -36,7 +36,7 @@ main_cols = ['student_id', 'stud_name', 'stud_vk', 'stud_email', 'month_product'
 col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', 'tariff':'Тариф',
        'product_title':'Продукт','pur_type':'Тип покупки', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
        'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
-       'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн',
+       'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн(от общей суммы)',
         'avg_nps':'Средний балл за уроки','is_pack':'Это пакет?','goal':'Цель',
        'curator_vk':'ВК наставника','curator_email':'Почта наставника'}
 

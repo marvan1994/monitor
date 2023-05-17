@@ -19,7 +19,7 @@ code = st.text_input('Введите ваш код','').replace(' ','')
 
 @st.cache
 def load_df():
-    return pd.read_csv('monitor.csv',dtype={'student_id':'int', 'stud_vk':str, 'stud_email':'str', 'stud_name':'str', 'tariff':str,
+    return pd.read_csv('monitor.csv',dtype={'student_id':'int', 'stud_vk':'str', 'stud_email':'str', 'stud_name':'str', 'tariff':str,
        'product_title':'str', 'is_pack':'int', 'subject':'str', 'class_degree':'str', 'speaker':'str',
        'month_product':'str', 'avg_result':'float', 'last_hw_sending':'str', 'max_count_hw':'int',
        'count_done_hw':int, 'max_count_web':'int', 'count_vieved_web':int, 'tutor_role':'str',

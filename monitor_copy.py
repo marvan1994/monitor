@@ -22,13 +22,13 @@ def load_df():
     return pd.read_csv('monitor.csv',dtype={'student_id':'int', 'stud_vk':'str', 'stud_email':'str', 'stud_name':'str', 'tariff':str,
        'product_title':'str', 'is_pack':'int', 'subject':'str', 'class_degree':'str', 'speaker':'str',
        'month_product':'str', 'avg_result':'float', 'last_hw_sending':'str', 'max_count_hw':'int',
-       'count_done_hw':int, 'max_count_web':'int', 'count_vieved_web':int, 'tutor_role':'str',
+       'count_done_hw':int,'count_manual_check_hw':'str', 'max_count_web':'int', 'count_vieved_web':int, 'tutor_role':'str',
        'vk_tutor':str}).set_index('student_id')
 
 df = load_df()
 main_cols = ['student_id', 'stud_name', 'stud_vk', 'stud_email', 'month_product',
        'pur_type', 'subject', 'class_degree', 'speaker', 'tariff', 'is_pack',
-       'goal', 'max_count_hw', 'count_done_hw', 'avg_result', 'max_count_web',
+       'goal', 'max_count_hw', 'count_done_hw', 'count_manual_check_hw','avg_result', 'max_count_web',
        'count_viewed_web', 'count_viewed_web_online', 'avg_nps', 'curator_vk',
        'curator_fio', 'curator_last_login','curator_last_activity',
        'curator_email']
@@ -36,7 +36,7 @@ main_cols = ['student_id', 'stud_name', 'stud_vk', 'stud_email', 'month_product'
 col_dict = {'stud_vk':'ВК', 'stud_email':'Почта', 'stud_name':'Имя', 'tariff':'Тариф',
        'product_title':'Продукт','pur_type':'Тип покупки', 'subject':'Предмет','class_degree':'Класс', 'speaker':'Спикер',
        'month_product':'Месяц', 'avg_result':'Ср. результат ДЗ', 'last_hw_sending':'Время решения последнего ДЗ', 'max_count_hw':'Макс. кол-во ДЗ на данный момент',
-       'count_done_hw':'Кол-во решённых ДЗ', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн(от общей суммы)',
+       'count_done_hw':'Кол-во решённых ДЗ','count_manual_check_hw':'Кол-во дз проверенных в ручную', 'max_count_web':'Макс. кол-во вебов на данный момент', 'count_viewed_web':'Кол-во просмотренных вебов','count_viewed_web_online':'Кол-во просмотренных вебов онлайн(от общей суммы)',
         'avg_nps':'Средний балл за уроки','is_pack':'Это пакет?','goal':'Цель',
        'curator_vk':'ВК наставника','curator_email':'Почта наставника'}
 
